@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc_pro/src/learn/model/album.dart';
 
-class AlbumDataList extends StatelessWidget {
+// ignore: must_be_immutable
+class AlbumDataWidget extends StatelessWidget {
   Album album;
 
-  AlbumDataList({this.album});
+  AlbumDataWidget({this.album});
 
   @override
   Widget build(BuildContext context) {

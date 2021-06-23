@@ -4,8 +4,9 @@ import 'package:flutter_bloc_pro/src/learn/bloc/bloc.dart';
 import 'package:flutter_bloc_pro/src/learn/bloc/event.dart';
 import 'package:flutter_bloc_pro/src/learn/bloc/state.dart';
 import 'package:flutter_bloc_pro/src/learn/model/album.dart';
-import 'package:flutter_bloc_pro/src/learn/ui/album_data_list.dart';
-import 'package:flutter_bloc_pro/src/learn/ui/service_error.dart';
+import 'package:flutter_bloc_pro/src/learn/widget/album_data_widget.dart';
+import 'package:flutter_bloc_pro/src/learn/widget/loader.dart';
+import 'package:flutter_bloc_pro/src/learn/widget/service_error.dart';
 
 class AlbumScreen extends StatefulWidget {
   @override
@@ -51,7 +52,7 @@ class _AlbumScreenState extends State<AlbumScreen> {
                     List<Album> albums = state.albums;
                     return _albumListWidget(albums);
                   }
-                  return CircularProgressIndicator();
+                  return Loader();
                 })
               ],
             ),
@@ -69,7 +70,7 @@ class _AlbumScreenState extends State<AlbumScreen> {
         itemCount: albums.length,
         itemBuilder: (BuildContext _context, int index) {
           Album album = albums[index];
-          return AlbumDataList(album: album);
+          return AlbumDataWidget(album: album);
         },
       ),
     );
