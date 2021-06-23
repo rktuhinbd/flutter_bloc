@@ -5,7 +5,7 @@ import 'package:http/http.dart';
 import 'album_repository.dart';
 
 class AlbumService implements AlbumsRepository {
-  static const _baseUrl = 'jsonplaceholder.typicode.com';
+  static const _baseUrl = 'ajsonplaceholder.typicode.com';
   static const String _albumUrl = '/albums';
 
   @override

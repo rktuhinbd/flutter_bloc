@@ -4,6 +4,7 @@ import 'package:flutter_bloc_pro/src/learn/bloc/bloc.dart';
 import 'package:flutter_bloc_pro/src/learn/bloc/event.dart';
 import 'package:flutter_bloc_pro/src/learn/bloc/state.dart';
 import 'package:flutter_bloc_pro/src/learn/model/album.dart';
+import 'package:flutter_bloc_pro/src/learn/ui/album_data_list.dart';
 import 'package:flutter_bloc_pro/src/learn/ui/service_error.dart';
 
 class AlbumScreen extends StatefulWidget {
@@ -40,7 +41,8 @@ class _AlbumScreenState extends State<AlbumScreen> {
                     builder: (BuildContext context, AlbumState state) {
                   if (state is AlbumsListError) {
                     final error = state.error;
-                    return NetworkError(message: error.message);
+                    String errorMessage = "${error.message}\nTap to retry";
+                    return NetworkError(message: errorMessage);
                   }
 
                   if (state is AlbumsLoaded) {
@@ -58,8 +60,9 @@ class _AlbumScreenState extends State<AlbumScreen> {
   }
 
   Widget _albumListWidget(List<Album> albums) {
-
-    albums.forEach((element) {print(element.title);});
+    albums.forEach((element) {
+      print(element.title);
+    });
     return Expanded(
       child: ListView.builder(
         shrinkWrap: true,
@@ -67,7 +70,7 @@ class _AlbumScreenState extends State<AlbumScreen> {
         itemCount: albums.length,
         itemBuilder: (BuildContext _context, int index) {
           Album album = albums[index];
-          return Text(album.title,style: TextStyle(color: Colors.black),);
+          return AlbumDataList(album: album);
         },
       ),
     );

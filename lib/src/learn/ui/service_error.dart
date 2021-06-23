@@ -12,8 +12,11 @@ class NetworkError extends StatelessWidget {
         child: Container(
             child: Text(
           message,
+          textAlign: TextAlign.center,
           style: TextStyle(
-              color: Colors.redAccent, fontWeight: FontWeight.bold, fontSize: 20),
+              color: Colors.redAccent,
+              fontWeight: FontWeight.bold,
+              fontSize: 20),
         )),
       ),
     );
