@@ -26,6 +26,7 @@ class _AlbumScreenState extends State<AlbumScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text("Flutter BLOC"),
       ),
@@ -42,7 +43,8 @@ class _AlbumScreenState extends State<AlbumScreen> {
                   if (state is AlbumsListError) {
                     final error = state.error;
                     String errorMessage = "${error.message}\nTap to retry";
-                    return NetworkError(message: errorMessage);
+                    return NetworkError(
+                        message: errorMessage, onTap: _loadAlbums());
                   }
 
                   if (state is AlbumsLoaded) {
@@ -60,9 +62,6 @@ class _AlbumScreenState extends State<AlbumScreen> {
   }
 
   Widget _albumListWidget(List<Album> albums) {
-    albums.forEach((element) {
-      print(element.title);
-    });
     return Expanded(
       child: ListView.builder(
         shrinkWrap: true,
