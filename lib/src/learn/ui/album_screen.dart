@@ -58,8 +58,9 @@ class _AlbumScreenState extends State<AlbumScreen> {
   }
 
   Widget _albumListWidget(List<Album> albums) {
-
-    albums.forEach((element) {print(element.title);});
+    albums.forEach((element) {
+      print(element.title);
+    });
     return Expanded(
       child: ListView.builder(
         shrinkWrap: true,
@@ -67,7 +68,29 @@ class _AlbumScreenState extends State<AlbumScreen> {
         itemCount: albums.length,
         itemBuilder: (BuildContext _context, int index) {
           Album album = albums[index];
-          return Text(album.title,style: TextStyle(color: Colors.black),);
+          return new Card(
+            child: new Column(
+              children: [
+                new Image.network(
+                    'https://i.ytimg.com/vi/fq4N0hgOWzU/maxresdefault.jpg'),
+                new Padding(
+                  padding: new EdgeInsets.all(7.0),
+                  child: new Row(
+                    children: [
+                       new Padding(
+                          padding: new EdgeInsets.all(7.0),
+                          child: new Text(
+                            album.title,
+                            style: new TextStyle(fontSize: 18.0),
+                          ),
+                        ),
+                    ],
+                    
+                  ),
+                )
+              ],
+            ),
+          );
         },
       ),
     );
