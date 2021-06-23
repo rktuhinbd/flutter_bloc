@@ -4,6 +4,7 @@ import 'package:flutter_bloc_pro/src/learn/bloc/bloc.dart';
 import 'package:flutter_bloc_pro/src/learn/bloc/event.dart';
 import 'package:flutter_bloc_pro/src/learn/bloc/state.dart';
 import 'package:flutter_bloc_pro/src/learn/model/album.dart';
+import 'package:flutter_bloc_pro/src/learn/ui/service_error.dart';
 
 class AlbumScreen extends StatefulWidget {
   @override
@@ -18,7 +19,6 @@ class _AlbumScreenState extends State<AlbumScreen> {
   }
 
   _loadAlbums() async {
-    // context.bloc<AlbumBloc>().add(AlbumEvents.fetchAlbums);
     BlocProvider.of<AlbumBloc>(context).add(AlbumEvents.fetchAlbums);
   }
 
@@ -30,7 +30,7 @@ class _AlbumScreenState extends State<AlbumScreen> {
       ),
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(20.0, 40.0, 24.0, 0),
+        padding: const EdgeInsets.fromLTRB(20.0, 24.0, 24.0, 0),
         child: Container(
           child: Center(
             child: Column(
@@ -39,12 +39,12 @@ class _AlbumScreenState extends State<AlbumScreen> {
                 BlocBuilder<AlbumBloc, AlbumState>(
                     builder: (BuildContext context, AlbumState state) {
                   if (state is AlbumsListError) {
-                    return Text("Error");
+                    final error = state.error;
+                    return NetworkError(message: error.message);
                   }
 
                   if (state is AlbumsLoaded) {
                     List<Album> albums = state.albums;
-                    print("Album data: ${albums.length}");
                     return _albumListWidget(albums);
                   }
                   return CircularProgressIndicator();
