@@ -11,7 +11,7 @@ class AlbumBloc extends Bloc<AlbumEvents, AlbumState> {
   final AlbumsRepository albumsRepository;
   List<Album> albums;
 
-  AlbumBloc({this.albumsRepository}) : super(AlbumsInitState());
+  AlbumBloc({this.albumsRepository}) : super(InitAlbumsState());
 
   @override
   Stream<AlbumState> mapEventToState(AlbumEvents event) async* {

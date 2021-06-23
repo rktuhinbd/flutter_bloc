@@ -6,7 +6,7 @@ abstract class AlbumState extends Equatable {
   List<Object> get props => [];
 }
 
-class AlbumsInitState extends AlbumState {}
+class InitAlbumsState extends AlbumState {}
 
 class AlbumsLoading extends AlbumState {}
 
