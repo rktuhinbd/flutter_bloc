@@ -11,7 +11,7 @@ class NetworkError extends StatelessWidget {
     return Expanded(
       child: Center(
         child: InkWell(
-          onTap: onTap,
+          onTap: this.onTap,
           child: Container(
               child: Text(
             message,

@@ -45,7 +45,7 @@ class _AlbumScreenState extends State<AlbumScreen> {
                     final error = state.error;
                     String errorMessage = "${error.message}\nTap to retry";
                     return NetworkError(
-                        message: errorMessage, onTap: _loadAlbums());
+                        message: errorMessage, onTap: _loadAlbums);
                   }
 
                   if (state is AlbumsLoaded) {
