@@ -16,10 +16,6 @@ class AlbumDataWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "User ID: ${album.userId}",
-            style: TextStyle(fontSize: 12, color: Colors.black),
-          ),
-          Text(
             "Title: ${album.title}",
             style: TextStyle(fontSize: 16, color: Colors.black),
           ),
